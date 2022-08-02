@@ -17,12 +17,16 @@ int main() {
 
 	unordered_set<int> zcol;
 	for (int i = 0; i < m; ++i)
-		for (int j = 0; j < n; ++j)
+		for (int j = 0; j < n; ++j) {
+			bool zrow = false;
 			if (!mat[i][j]) {
-				for (int& e : mat[i])
-					e = 0;
+				zrow = true;
 				zcol.insert(j);
 			}
+			if (zrow)
+				for (int& e : mat[i])
+					e = 0;
+		}
 
 	for (const int& col : zcol)
 		for (int i = 0; i < m; ++i)
